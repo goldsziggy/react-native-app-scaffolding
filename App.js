@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import createStore from './src/redux/create';
 import styled from 'styled-components';
 import Login from './src/containers/Login';
+
+const store = createStore();
 
 export const Notch = styled.View`
     flex: 0.04;
@@ -25,11 +29,13 @@ export const Body = styled.View`
 export default class App extends Component {
     render() {
         return (
-            <Body>
-                <Notch />
-                <Header>React Native App Scaffolding</Header>
-                <Login />
-            </Body>
+            <Provider store={store}>
+                <Body>
+                    <Notch />
+                    <Header>React Native App Scaffolding</Header>
+                    <Login />
+                </Body>
+            </Provider>
         );
     }
 }
