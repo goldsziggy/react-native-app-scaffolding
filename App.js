@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Login from './src/containers/Login';
 
 export const Notch = styled.View`
-    height: 22px;
-    background-color: #e56027;
+    flex: 0.04;
+    background-color: #fff;
 `;
 
 export const Header = styled.Text`
+    flex: 0.14;
+    margin-top: 80px;
     font-size: 34px;
     color: #fff;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 8px;
 `;
 
 export const Body = styled.View`
@@ -24,6 +28,7 @@ export default class App extends Component {
             <Body>
                 <Notch />
                 <Header>React Native App Scaffolding</Header>
+                <Login />
             </Body>
         );
     }
