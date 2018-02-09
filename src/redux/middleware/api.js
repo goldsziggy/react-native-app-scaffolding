@@ -1,20 +1,24 @@
 import { AsyncStorage } from 'react-native';
-import request from 'superagent';
+import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3001/api/';
+const BASE_URL = 'https://api.dev.peerceive.com/api/v1';
 
 function callApi(type, endpoint, options) {
     let token = AsyncStorage.getItem('jwt') || null;
 
-    return request(type, BASE_URL + endpoint)
-        .set({ Authorization: 'Bearer ' + token })
-        .send(options)
-        .then(res => {
-            if (!res.ok) {
-                return Promise.reject(res);
-            }
-            return res;
-        });
+    return axios({
+        method: type,
+        headers: { Authorization: `Bearer ${token}` },
+        body: options,
+        baseURL: BASE_URL,
+        url: endpoint
+    }).then(res => {
+        if (!res.ok) {
+            throw res;
+            // return Promise.reject(res);
+        }
+        return res;
+    });
 }
 
 export const CALL_API = Symbol('Call API');
