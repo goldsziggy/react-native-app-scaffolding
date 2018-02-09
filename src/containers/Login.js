@@ -14,6 +14,7 @@ const Screen = styled.View`
 
 class Login extends Component {
     state = {
+        company: 'swarming',
         username: '',
         password: ''
     };
@@ -24,6 +25,7 @@ class Login extends Component {
                 <Input
                     height="25px"
                     width="75%"
+                    autoCapitalize="none"
                     returnKeyType="next"
                     keyboardAppearance="dark"
                     placeholder="Username"

@@ -1,7 +1,6 @@
 /*eslint no-console: 0 */
 import { AsyncStorage } from 'react-native';
-import request from 'superagent';
-
+import axios from 'axios';
 //User Actions
 const LOGIN_REQUEST = 'application/auth/LOGIN_REQUEST';
 const LOGIN_SUCCESS = 'application/auth/LOGIN_SUCCESS';
@@ -19,6 +18,8 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_REQUEST:
+            console.log('LOGIN_REQUEST');
+            console.log(action);
             return {
                 ...state,
                 loading: true,
@@ -26,6 +27,7 @@ export default function reducer(state = initialState, action) {
                 user: action.creds
             };
         case LOGIN_SUCCESS:
+            console.log('LOGIN_SUCCESS');
             return {
                 ...state,
                 loading: false,
@@ -33,6 +35,8 @@ export default function reducer(state = initialState, action) {
                 errorMessage: ''
             };
         case LOGIN_FAILURE:
+            console.log('LOGIN_FAILURE');
+            console.log(action);
             return {
                 ...state,
                 loading: false,
@@ -59,16 +63,17 @@ export function requestLogin(creds) {
 }
 
 export function receiveLogin(user) {
+    console.log(user);
     return {
         type: LOGIN_SUCCESS,
         id_token: user.id_token
     };
 }
 
-export function loginError(message) {
+export function loginError(response) {
     return {
         type: LOGIN_FAILURE,
-        message
+        response
     };
 }
 
@@ -88,18 +93,22 @@ export function receiveLogout() {
 export function loginUser(creds) {
     return dispatch => {
         dispatch(requestLogin(creds));
-        return request
-            .post('http://localhost:3001/' + 'sessions/create')
-            .send(creds)
-            .end((err, res) => {
+        return axios({
+            url: '/auth/login',
+            baseURL: 'https://api.dev.peerceive.com/api/v1',
+            method: 'post',
+            data: creds
+        }).then(
+            res => {
                 //dispatch(setLoading(false));
-                if (err) {
-                    dispatch(loginError(res.message));
-                } else {
-                    dispatch(receiveLogin(res));
-                    AsyncStorage.setItem('jwt', res.body.id_token);
-                }
-            });
+                dispatch(receiveLogin(res));
+                console.log(res);
+                AsyncStorage.setItem('jwt', res.data.data.token);
+            },
+            err => {
+                dispatch(loginError(err.response));
+            }
+        );
     };
 }
 
