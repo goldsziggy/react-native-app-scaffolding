@@ -26,17 +26,7 @@ export default class App {
                             screen: 'Login',
                             title: 'Login',
                             navigatorStyle: {}
-                        },
-                        passProps: {}
-                    });
-                } else {
-                    Navigation.startSingleScreenApp({
-                        screen: {
-                            screen: 'Login',
-                            title: 'Login',
-                            navigatorStyle: {}
-                        },
-                        passProps: {}
+                        }
                     });
                 }
                 return;
