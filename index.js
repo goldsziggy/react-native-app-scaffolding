@@ -1,4 +1,12 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import { Navigation } from 'react-native-navigation';
 
-AppRegistry.registerComponent('ReactNativeAppScaffolding', () => App);
+import { registerScreens } from './src/screens';
+
+registerScreens(); 
+
+Navigation.startSingleScreenApp({
+	screen: {
+	  screen: 'Login', 
+	  title: 'Login'
+	}
+})
