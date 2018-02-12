@@ -1,37 +1,59 @@
 import React, { Component } from 'react';
-import { Navigation } from 'react-native-navigation';
+import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 import createStore from './src/redux/create';
 import styled from 'styled-components';
-import { registerScreens } from './src/screens/index';
-import { Platform } from 'react-native';
+import Login from './src/containers/Login';
 
 const store = createStore();
 
-registerScreens(store, Provider);
+export const Notch = styled.View`
+    flex: 0.04;
+    background-color: #fff;
+`;
 
-export default class App {
-    constructor() {
-        // since react-redux only works on components, we need to subscribe this class manually
-        store.subscribe(this.onStoreUpdate.bind(this));
-        store.dispatch(appActions.appInitialized());
-    }
+export const Header = styled.Text`
+    flex: 0.14;
+    margin-top: 80px;
+    font-size: 34px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`;
 
-    startApp(root) {
-        switch (root) {
-            case 'login':
-                if (Platform.OS === 'ios') {
-                    Navigation.startSingleScreenApp({
-                        screen: {
-                            screen: 'Login',
-                            title: 'Login',
-                            navigatorStyle: {}
+export const Body = styled.View`
+    flex: 1;
+    background-color: #1a364e;
+`;
+
+export default class App extends Component {
+    render() {
+        const { screen } = this.props;
+        return (
+            <Provider store={store}>
+                <Body>
+                    <Notch />
+                    <Header>React Native App Scaffolding</Header>
+                    {() => {
+                        switch (screen) {
+                            case 'loggedIn':
+                                return <Body>LoggedIn</Body>;
+                            default:
+                                return <Login />;
                         }
-                    });
-                }
-                return;
-            default:
-                console.error('Unknown app root');
-        }
+                    }}
+                </Body>
+            </Provider>
+        );
     }
 }
+
+function mapStateToProps(state) {
+    const { screen } = state.auth;
+    return {
+        screen
+    };
+}
+
+connect(mapStateToProps)(Body);
