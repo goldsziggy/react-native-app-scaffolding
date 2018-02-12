@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Keyboard } from 'react-native';
 import { loginUser } from '../redux/modules/auth';
-import { Input } from '../shared/components/Input';
-import { Btn as Button } from '../shared/components/Button';
+import { Input, Button } from '../shared/components';
+
 import styled from 'styled-components';
 
 const Screen = styled.View`
