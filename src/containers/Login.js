@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Keyboard } from 'react-native';
 import { loginUser } from '../redux/modules/auth';
-import { Input, Button } from '../shared/components';
+import { Input, Button } from '../shared/components/';
 
 import styled from 'styled-components';
 

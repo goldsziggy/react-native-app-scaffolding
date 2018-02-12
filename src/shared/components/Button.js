@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Button = styled.TouchableHighlight.attrs({
+const Btn = styled.TouchableHighlight.attrs({
     underlayColor: '#ccc'
 })`
     background-color: #fff;
@@ -16,11 +16,11 @@ const Button = styled.TouchableHighlight.attrs({
 // for text styling of button later
 const ButtonText = styled.Text``;
 
-export const Btn = props => {
+export default Button = props => {
     const { height, width, title } = props;
     return (
-        <Button {...props} height={height} width={width}>
+        <Btn {...props} height={height} width={width}>
             <ButtonText>{props.value}</ButtonText>
-        </Button>
+        </Btn>
     );
 };

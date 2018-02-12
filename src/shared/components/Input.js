@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.TextInput.attrs({
+export default Input = styled.TextInput.attrs({
     placeholderTextColor: '#fff'
 })`
     margin: 10px 5px;
