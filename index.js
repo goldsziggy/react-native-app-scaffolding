@@ -2,11 +2,12 @@ import { Navigation } from 'react-native-navigation';
 
 import { registerScreens } from './src/screens';
 
-registerScreens(); 
+registerScreens();
 
 Navigation.startSingleScreenApp({
-	screen: {
-	  screen: 'Login', 
-	  title: 'Login'
-	}
-})
+    screen: {
+        screen: 'Login',
+        title: 'Login'
+    },
+    animationType: 'slide-up'
+});
