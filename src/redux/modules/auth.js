@@ -96,7 +96,6 @@ export function loginUser(creds) {
             res => {
                 //dispatch(setLoading(false));
                 dispatch(receiveLogin(res));
-                console.log(res);
                 AsyncStorage.setItem('jwt', res.data.data.token);
             },
             err => {

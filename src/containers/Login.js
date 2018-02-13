@@ -2,20 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Keyboard } from 'react-native';
 import { loginUser } from '../redux/modules/auth';
-import { Input, Button } from '../shared/components/';
-
-import styled from 'styled-components';
-
-const Body = styled.View`
-    flex: 1;
-    background-color: #1a364e;
-`;
-
-const Screen = styled.View`
-    flex: 0.5;
-    justify-content: center;
-    align-items: center;
-`;
+import { Body, Screen, Input, Button } from '../shared/components/';
 
 class Login extends Component {
     state = {
@@ -23,6 +10,19 @@ class Login extends Component {
         username: '',
         password: ''
     };
+    handleSubmit() {
+        const { state } = this;
+        const { navigator } = this.props;
+        this.props.loginUser(state);
+        navigator.push({
+            screen: 'Dashboard'
+        });
+        this.setState({
+            company: 'swarming',
+            username: '',
+            password: ''
+        });
+    }
     render() {
         const { username, password } = this.state;
         return (
@@ -49,11 +49,18 @@ class Login extends Component {
                         value={password}
                         onChangeText={password => this.setState({ password })}
                     />
-                    <Button height="45px" width="75%" onPress={() => this.props.loginUser(this.state)} value="Login" />
+                    <Button height="45px" width="75%" onPress={this.handleSubmit.bind(this)} value="Login" />
                 </Screen>
             </Body>
         );
     }
 }
 
-export default connect(null, { loginUser })(Login);
+function mapStateToProps(state) {
+    const { isAuthenticated } = state.auth;
+    return {
+        isAuthenticated
+    };
+}
+
+export default connect(mapStateToProps, { loginUser })(Login);
