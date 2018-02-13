@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "ReactNativeAppScaffolding",
   "version": "0.0.1",
   "private": true,
@@ -27,4 +28,37 @@
   "jest": {
     "preset": "react-native"
   }
+=======
+    "name": "ReactNativeAppScaffolding",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node node_modules/react-native/local-cli/cli.js start",
+        "react-devtools": "react-devtools",
+        "postinstall": "remotedev-debugger --host localhost --port 5678 --injectserver",
+        "test": "jest"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "axios": "^0.17.1",
+        "babel-jest": "22.2.0",
+        "babel-preset-react-native": "4.0.0",
+        "electron-devtools-installer": "^2.2.3",
+        "jest": "22.2.1",
+        "react": "16.2.0",
+        "react-devtools": "^3.1.0",
+        "react-native": "0.53.0",
+        "react-native-navigation": "^1.1.376",
+        "react-redux": "^5.0.6",
+        "react-test-renderer": "16.2.0",
+        "redux": "^3.7.2",
+        "redux-thunk": "^2.2.0",
+        "remote-redux-devtools": "^0.5.12",
+        "remotedev-rn-debugger": "^0.8.3",
+        "styled-components": "^3.1.6"
+    },
+    "jest": {
+        "preset": "react-native"
+    }
+>>>>>>> 97682ca1bd427c669739341f2dfa04bbb0f6d106
 }

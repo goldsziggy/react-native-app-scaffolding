@@ -18,8 +18,6 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_REQUEST:
-            console.log('LOGIN_REQUEST');
-            console.log(action);
             return {
                 ...state,
                 loading: true,
@@ -27,7 +25,6 @@ export default function reducer(state = initialState, action) {
                 user: action.creds
             };
         case LOGIN_SUCCESS:
-            console.log('LOGIN_SUCCESS');
             return {
                 ...state,
                 loading: false,
@@ -35,8 +32,6 @@ export default function reducer(state = initialState, action) {
                 errorMessage: ''
             };
         case LOGIN_FAILURE:
-            console.log('LOGIN_FAILURE');
-            console.log(action);
             return {
                 ...state,
                 loading: false,
@@ -63,7 +58,6 @@ export function requestLogin(creds) {
 }
 
 export function receiveLogin(user) {
-    console.log(user);
     return {
         type: LOGIN_SUCCESS,
         id_token: user.id_token
@@ -102,7 +96,6 @@ export function loginUser(creds) {
             res => {
                 //dispatch(setLoading(false));
                 dispatch(receiveLogin(res));
-                console.log(res);
                 AsyncStorage.setItem('jwt', res.data.data.token);
             },
             err => {
