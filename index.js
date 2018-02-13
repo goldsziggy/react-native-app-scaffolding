@@ -7,7 +7,6 @@ registerScreens();
 Navigation.startSingleScreenApp({
     screen: {
         screen: 'Login',
-        title: 'Login'
-    },
-    animationType: 'slide-up'
+        title: 'React Native App Scaffolding'
+    }
 });
