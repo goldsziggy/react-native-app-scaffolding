@@ -11,6 +11,15 @@ This scaffolding is to help lay the foundation for larger scalable react native 
 
 The idea of this repo is to clone it down to your machine, and get started on development right away. With a good base and room to grow your application the right way without having to refactor or reorganize your file structure down the road.
 
+## Development Setup
+
+1. First clone the repository `https://github.com/Caryyon/react-native-app-scaffolding`
+2. Change directories: `cd react-native-app-scaffolding`
+3. Install Dependencies: `yarn install`
+4. In Xcode, in Project Navigator (left pane), right-click on the `Libraries` > `Add files to [project name]`. Add `./node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj`
+5. In Xcode, in Project Navigator (left pane), click on your project (top), then click on your target row (on the "project and targets list", which is on the left column of the right pane) and select the `Build Phases` tab (right pane). In the `Link Binary With Libraries` section add `libReactNativeNavigation.a`
+6. In Xcode, in Project Navigator (left pane), click on your project (top), then click on your project row (on the "project and targets list") and select the `Build Settings` tab (right pane). In the `Header Search Paths` section add `$(SRCROOT)/../node_modules/react-native-navigation/ios`. Make sure on the right to mark this new path `recursive`
+
 ## Dependencies
 
 * [Yarn](https://yarnpkg.com/en/)
