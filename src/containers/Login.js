@@ -15,7 +15,8 @@ class Login extends Component {
         const { navigator } = this.props;
         this.props.loginUser(state);
         navigator.push({
-            screen: 'Dashboard'
+            screen: 'Dashboard',
+            backButtonTitle: 'RNAS'
         });
         this.setState({
             company: 'swarming',
