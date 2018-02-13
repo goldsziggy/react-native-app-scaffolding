@@ -5,7 +5,7 @@ This scaffolding is to help lay the foundation for larger scalable react native 
 * React
 * React-Native
 * Redux
-  ** Duck Pattern
+    * Duck Pattern
 * Styled-Components
 * JWT Middleware
 
