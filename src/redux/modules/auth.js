@@ -102,7 +102,10 @@ export function loginUser(creds) {
             res => {
                 //dispatch(setLoading(false));
                 dispatch(receiveLogin(res));
+<<<<<<< HEAD
                 console.log(res);
+=======
+>>>>>>> redux-store
                 AsyncStorage.setItem('jwt', res.data.data.token);
             },
             err => {
