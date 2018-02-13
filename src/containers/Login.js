@@ -12,17 +12,17 @@ class Login extends Component {
     };
     handleSubmit() {
         const { state } = this;
-        const { navigator } = this.props;
         this.props.loginUser(state);
-        navigator.push({
-            screen: 'Dashboard',
-            backButtonTitle: 'RNAS'
-        });
-        this.setState({
-            company: 'swarming',
-            username: '',
-            password: ''
-        });
+    }
+    componentWillReceiveProps(nextProps) {
+        const { navigator } = this.props;
+        console.log(nextProps);
+        nextProps.isAuthenticated
+            ? navigator.push({
+                  screen: 'Dashboard',
+                  backButtonTitle: 'RNAS'
+              })
+            : alert('Username or Password is inncorrect');
     }
     render() {
         const { username, password } = this.state;
