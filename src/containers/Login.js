@@ -11,18 +11,14 @@ class Login extends Component {
         password: ''
     };
     handleSubmit() {
-        const { state } = this;
-        this.props.loginUser(state);
+        this.props.loginUser(this.state);
     }
-    componentWillReceiveProps(nextProps) {
-        const { navigator } = this.props;
-        console.log(nextProps);
-        nextProps.isAuthenticated
-            ? navigator.push({
-                  screen: 'Dashboard',
-                  backButtonTitle: 'RNAS'
-              })
-            : alert('Username or Password is inncorrect');
+    componentWillUnmount() {
+        this.setState({
+            company: 'swarming',
+            username: '',
+            password: ''
+        });
     }
     render() {
         const { username, password } = this.state;
@@ -49,6 +45,7 @@ class Login extends Component {
                         placeholder="Password"
                         value={password}
                         onChangeText={password => this.setState({ password })}
+                        onSubmitEditing={this.handleSubmit.bind(this)}
                     />
                     <Button height="45px" width="75%" onPress={this.handleSubmit.bind(this)} value="Login" />
                 </Screen>
