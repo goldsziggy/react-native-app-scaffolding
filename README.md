@@ -12,7 +12,7 @@ This scaffolding is to help lay the foundation for larger scalable react native 
 The idea of this repo is to clone it down to your machine, and get started on development right away. With a good base and room to grow your application the right way without having to refactor or reorganize your file structure down the road.
 
 ## Global dependencies
-1. run this command to install react-native cli tools `npm install -g react-native`
+1. run this command to install react-native cli tools `npm install -g react-native-cli`
 
 ## Development Setup
 
