@@ -7,6 +7,9 @@ registerScreens();
 Navigation.startSingleScreenApp({
     screen: {
         screen: 'Login',
-        title: 'React Native App Scaffolding'
-    }
+        navBar: false
+    },
+    appStyle: {
+    keepStyleAcrossPush: false
+  }
 });

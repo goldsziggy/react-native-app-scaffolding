@@ -7,6 +7,6 @@ import Login from '../../src/containers/Login';
 import Dashboard from '../../src/containers/Dashboard';
 
 export function registerScreens() {
-    Navigation.registerComponent('Login', () => Login, store, Provider);
+    Navigation.registerComponent('Login', () => Dashboard, store, Provider);
     Navigation.registerComponent('Dashboard', () => Dashboard, store, Provider);
 }

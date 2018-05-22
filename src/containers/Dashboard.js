@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import { Body, Screen } from '../shared/components/';
 import styled from 'styled-components';
 
-const List = styled.View``;
-
-const Item = styled.Text`
-    color: #fff;
+const WebWrapper = styled.WebView.attrs({
+    source: {
+        uri: 'https://bulkr.swarming.io'
+    }
+})`
+    flex: 1;
 `;
 
 export default class Dashboard extends Component {
+    static navigatorStyle = {
+        navBarHidden: true
+    };
     render() {
-        return (
-            <Body>
-                <Screen>
-                    <List>
-                        <Item>To Edit this page go to /src/containers/Dashboard.js</Item>
-                    </List>
-                </Screen>
-            </Body>
-        );
+        return <WebWrapper />;
     }
 }

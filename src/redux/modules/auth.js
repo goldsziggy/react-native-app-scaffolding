@@ -89,9 +89,12 @@ export function loginUser(creds) {
         dispatch(requestLogin(creds));
         return axios({
             url: '/auth/login',
-            baseURL: 'https://api.dev.peerceive.com/api/v1',
+            baseURL: 'http://localhost:1337/auth/local',
             method: 'post',
-            data: creds
+            data: {
+                identifier: creds.username,
+                password: creds.password
+           }
         }).then(
             res => {
                 //dispatch(setLoading(false));
